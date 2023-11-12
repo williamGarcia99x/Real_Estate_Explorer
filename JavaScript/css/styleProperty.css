@@ -107,18 +107,16 @@ main {
   height: 100%;
 }
 
-main section {
-  flex-grow: 1;
+div.form-and-chart {
   display: flex;
   flex-direction: row;
-  
+  gap: 6rem;
+  justify-content: center;
 }
 
-main section {
-    display: flex;
-    flex-direction: row;
-    
-  }
+h2{
+  text-align: center;
+}
 
 footer {
   padding: 20px;
