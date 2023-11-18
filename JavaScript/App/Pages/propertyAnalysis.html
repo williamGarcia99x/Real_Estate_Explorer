@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Florida Real Estate Explorer</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="../css/styleProperty.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div id="logo">
+          <h1>
+            <span class="highlight">F</span>lorida
+            <span class="highlight">R</span>eal
+            <span class="highlight">E</span>state
+            <span class="highlight">E</span>xplorer
+          </h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="propertyAnalysis.html">Property Analysis</a></li>
+            <li><a href="index.html">Affordability Analysis</a></li>
+            <li><a href="index.html">Neighborhood Safety Analysis</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="banner-container">
+        <img
+          alt="Banner for Property Analysis Page"
+          src="../assets/lying-listing-batvai.jpg"
+          class="banner-img"
+        />
+        <h1 class="page-title">Property Analysis</h1>
+      </div>
+      <p class="page-info">
+        Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
+        nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
+        vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
+        euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
+        habitasse platea dictumst. Maecenas facilisis mauris at libero pharetra,
+        id tincidunt mauris luctus. Duis non turpis vitae arcu luctus euismod.
+      </p>
+      <p class="page-info">
+        Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
+        nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
+        vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
+        euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
+        habitasse platea dictumst. Maecenas facilisis mauris at libero pharetra,
+        id tincidunt mauris luctus. Duis non turpis vitae arcu luctus euismod.
+      </p>
+    </header>
+
+    <main>
+      <section class="deviation">
+        <h2>Analysis of the Deviation of Sales Price from Appraisal Value</h2>
+        <div class="form-and-chart">
+          <form>
+            <p>form where the user will select county and time period</p>
+            <label for="start-date">Start Date:</label>
+            <input id="start-date" type="month" min="2022-01" max="2023-06" />
+
+            <label for="end-date">End Date:</label>
+            <input id="end-date" type="month" min="2022-01" max="2023-06" />
+          </form>
+          <div>
+            <canvas
+              class="chart"
+              id="deviation-chart"
+              width="600"
+              height="400"
+            ></canvas>
+          </div>
+        </div>
+        <p>
+          Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
+          tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
+          nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
+          vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
+          euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
+          habitasse platea dictumst. Maecenas facilisis mauris at libero
+          pharetra, id tincidunt mauris luctus. Duis non turpis vitae arcu
+          luctus euismod.
+        </p>
+      </section>
+
+      <section class="age">
+        <h2>Analysis of the Influence of Age on Market Value</h2>
+        <div class="form-and-chart">
+          <form>
+            <p>form where the user will select county and time period</p>
+            <label for="start-date">Start Date:</label>
+            <input id="start-date" type="month" min="2022-01" max="2023-06" />
+
+            <label for="end-date">End Date:</label>
+            <input id="end-date" type="month" min="2022-01" max="2023-06" />
+          </form>
+          <div>
+            <canvas
+              class="chart"
+              id="age-chart"
+              width="600"
+              height="400"
+            ></canvas>
+          </div>
+        </div>
+        <p>
+          Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
+          tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
+          nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
+          vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
+          euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
+          habitasse platea dictumst. Maecenas facilisis mauris at libero
+          pharetra, id tincidunt mauris luctus. Duis non turpis vitae arcu
+          luctus euismod.
+        </p>
+      </section>
+
+      <section class="land-size">
+        <h2>Analysis of Sales for Properties of Various Land Sizes</h2>
+        <div class="form-and-chart">
+          <form>
+            <p>form where the user will select county and time period</p>
+            <label for="start-date">Start Date:</label>
+            <input id="start-date" type="month" min="2022-01" max="2023-06" />
+
+            <label for="end-date">End Date:</label>
+            <input id="end-date" type="month" min="2022-01" max="2023-06" />
+          </form>
+          <div>
+            <canvas
+              class="chart"
+              id="land-size-chart"
+              width="600"
+              height="400"
+            ></canvas>
+          </div>
+        </div>
+        <p>
+          Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
+          tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
+          nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
+          vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
+          euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
+          habitasse platea dictumst. Maecenas facilisis mauris at libero
+          pharetra, id tincidunt mauris luctus. Duis non turpis vitae arcu
+          luctus euismod.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Disclaimer: This is a CIS4301 project for University of Florida.
+        Copyright &copy; 2023.
+      </p>
+    </footer>
+    <script src="../Javascript/propertyAnal.js"></script>
+  </body>
+</html>
