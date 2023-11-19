@@ -54,6 +54,7 @@ function renderChart(canvasId, chartData) {
         },
       },
     },
+
   });
 }
 
@@ -65,3 +66,4 @@ const ageChart = renderChart("age-chart", ageChartData);
 
 // Render land size chart
 const landSizeChart = renderChart("land-size-chart", landSizeChartData);
+
