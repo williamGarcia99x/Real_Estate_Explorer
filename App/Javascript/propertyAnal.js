@@ -46,3 +46,26 @@ const ageChart = new Chart(ageElement, {
     },
   },
 });
+
+const landSizeElement = document.getElementById("land-size-chart").getContext("2d");
+
+const landSizeChart = new Chart(landSizeElement, {
+  type: "line",
+  data: {
+    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [1200, 19, 3, 5, 2, 3],
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  },
+});
