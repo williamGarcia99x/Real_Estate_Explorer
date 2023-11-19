@@ -1,0 +1,126 @@
+body {
+  font: 15px/1.5 Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+}
+
+/*Global*/
+.container,
+.home-header {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/*Header*/
+header {
+  background: #fff;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #f4f4f4 2px solid;
+}
+
+header a {
+  position: relative;
+  color: #2d9bf0;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+header ul {
+  margin: 0;
+  padding: 0;
+}
+
+header li {
+  float: left;
+  display: inline;
+  padding: 0 20px 0 20px;
+}
+
+header #logo {
+  float: left;
+}
+
+header #logo h1 {
+  margin: 0;
+}
+
+header nav {
+  float: right;
+  margin-top: 10px;
+}
+
+header .highlight {
+  color: #2d9bf0;
+  font-weight: bold;
+}
+
+header a:after {
+  content: "";
+  position: absolute;
+  background-color: #faacfb;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+header a:hover::after {
+  width: 100%;
+}
+
+/*Banner settings*/
+.banner-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.page-info {
+  position: relative;
+  width: 80%;
+  left: 10%;
+}
+
+.page-title {
+  position: absolute;
+  bottom: 50%;
+  left: 40%;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+}
+
+/*Sections on data analysis*/
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+div.form-and-chart {
+  display: flex;
+  flex-direction: row;
+  gap: 6rem;
+  justify-content: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+footer {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #c5c3c4;
+  text-align: center;
+}
