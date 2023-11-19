@@ -29,14 +29,12 @@
           </ul>
         </nav>
       </div>
-      <div class="banner-container">
-        <img
-          alt="Banner for Property Analysis Page"
-          src="../assets/lying-listing-batvai.jpg"
-          class="banner-img"
-        />
-        <h1 class="page-title">Neighborhood Safety Analysis</h1>
-      </div>
+      <section id="banner">
+        <div class="banner-container">
+          <h1>Neighborhood Safety Analysis</h1>
+        </div>
+      </section>
+
       <p class="page-info">
         Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
         tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
@@ -59,87 +57,60 @@
 
     <main>
       <section class="deviation">
-        <h2>Analysis of the Deviation of Sales Price from Appraisal Value</h2>
-        <div class="form-and-chart">
-          <form>
-            <p>form where the user will select county and time period</p>
-            <label for="start-date">Start Date:</label>
-            <input id="start-date" type="month" min="2022-01" max="2023-06" />
+        <h2>
+          Analysis of the Relationship Between Crime Severity and Real Estate
+          Values
+        </h2>
+        <form class="input-form">
+          <label for="start-date">Start Date:</label>
+          <input
+            id="start-date"
+            type="month"
+            min="2022-01"
+            max="2023-06"
+            required
+          />
 
-            <label for="end-date">End Date:</label>
-            <input id="end-date" type="month" min="2022-01" max="2023-06" />
-          </form>
+          <label for="end-date">End Date:</label>
+          <input
+            id="end-date"
+            type="month"
+            min="2022-01"
+            max="2023-06"
+            required
+          />
+
+          <label for="county-select">County:</label>
+          <select id="county-select" required>
+            <option value="">--Please choose a county--</option>
+            <option value="Miami-Dade">Miami-Dade</option>
+          </select>
+
+          <input type="submit" value="Search" />
+        </form>
+        <div class="chart-block">
           <div>
-            <canvas
-              class="chart"
-              id="deviation-chart"
-              width="600"
-              height="400"
-            ></canvas>
+            <h3>Average Degree of Crime Over Time</h3>
+            <div>
+              <canvas
+                class="chart"
+                id="crime-degree-chart"
+                width="600"
+                height="400"
+              ></canvas>
+            </div>
           </div>
-        </div>
-        <p>
-          Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
-          tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
-          nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
-          vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
-          euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
-          habitasse platea dictumst. Maecenas facilisis mauris at libero
-          pharetra, id tincidunt mauris luctus. Duis non turpis vitae arcu
-          luctus euismod.
-        </p>
-      </section>
 
-      <section class="age">
-        <h2>Analysis of the Influence of Age on Market Value</h2>
-        <div class="form-and-chart">
-          <form>
-            <p>form where the user will select county and time period</p>
-            <label for="start-date">Start Date:</label>
-            <input id="start-date" type="month" min="2022-01" max="2023-06" />
-
-            <label for="end-date">End Date:</label>
-            <input id="end-date" type="month" min="2022-01" max="2023-06" />
-          </form>
           <div>
-            <canvas
-              class="chart"
-              id="age-chart"
-              width="600"
-              height="400"
-            ></canvas>
-          </div>
-        </div>
-        <p>
-          Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
-          tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
-          nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
-          vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
-          euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
-          habitasse platea dictumst. Maecenas facilisis mauris at libero
-          pharetra, id tincidunt mauris luctus. Duis non turpis vitae arcu
-          luctus euismod.
-        </p>
-      </section>
-
-      <section class="land-size">
-        <h2>Analysis of Sales for Properties of Various Land Sizes</h2>
-        <div class="form-and-chart">
-          <form>
-            <p>form where the user will select county and time period</p>
-            <label for="start-date">Start Date:</label>
-            <input id="start-date" type="month" min="2022-01" max="2023-06" />
-
-            <label for="end-date">End Date:</label>
-            <input id="end-date" type="month" min="2022-01" max="2023-06" />
-          </form>
-          <div>
-            <canvas
-              class="chart"
-              id="land-size-chart"
-              width="600"
-              height="400"
-            ></canvas>
+            <h3>Average Sale Prices Over Time</h3>
+            <div>
+              <canvas
+                class="chart"
+                id="sales-chart"
+                width="600"
+                height="400"
+              ></canvas>
+            </div>
           </div>
         </div>
         <p>
@@ -161,6 +132,6 @@
         Copyright &copy; 2023.
       </p>
     </footer>
-    <script src="../Javascript/propertyAnal.js"></script>
+    <script src="../Javascript/neighborhood.js"></script>
   </body>
 </html>

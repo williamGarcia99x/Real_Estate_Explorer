@@ -81,10 +81,10 @@ header a:hover::after {
   background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
   text-align: center;
-  color:#fff;
+  color: #fff;
 }
 
-#banner h1{
+#banner h1 {
   font-size: 56px;
   margin-top: 150px;
   text-shadow: 2px 2px 4px #000000;
@@ -116,11 +116,11 @@ div.form-and-chart {
   justify-content: center;
 }
 
-h2{
+h2 {
   text-align: center;
 }
 
-main{
+main {
   margin: 70px 250px 70px 250px;
 }
 

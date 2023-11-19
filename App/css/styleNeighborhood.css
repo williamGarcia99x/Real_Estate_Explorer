@@ -74,6 +74,22 @@ header a:hover::after {
 }
 
 /*Banner settings*/
+
+#banner {
+  min-height: 400px;
+  background: url(../assets/for-sale.jpeg) no-repeat 0 -400px;
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #fff;
+}
+
+#banner h1 {
+  font-size: 56px;
+  margin-top: 150px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
 .banner-container {
   position: relative;
   width: 100%;
@@ -82,21 +98,7 @@ header a:hover::after {
 }
 
 .page-info {
-  position: relative;
-  width: 80%;
-  left: 10%;
-}
-
-.page-title {
-  position: absolute;
-  bottom: 50%;
-  left: 40%;
-}
-
-.banner-img {
-  width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  display: block;
+  margin: 70px 250px 70px 250px;
 }
 
 /*Sections on data analysis*/
@@ -107,15 +109,27 @@ main {
   height: 100%;
 }
 
-div.form-and-chart {
+div.chart-block {
   display: flex;
   flex-direction: row;
   gap: 6rem;
   justify-content: center;
 }
 
-h2 {
+h2,
+h3 {
   text-align: center;
+}
+
+form.input-form {
+  border-radius: 1px;
+  border-color: #000000;
+  border-style: solid;
+  background-color: #9eabb5;
+}
+
+main {
+  margin: 70px 250px 70px 250px;
 }
 
 footer {
