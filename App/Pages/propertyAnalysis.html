@@ -24,42 +24,47 @@
           <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="propertyAnalysis.html">Property Analysis</a></li>
-            <li><a href="index.html">Affordability Analysis</a></li>
-            <li><a href="index.html">Neighborhood Safety Analysis</a></li>
+            <li><a href="../index.html">Affordability Analysis</a></li>
+            <li>
+              <a href="../Pages/neighborhood-safety.html"
+                >Neighborhood Safety Analysis</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
     </header>
     <section id="banner">
       <div class="banner-container">
-      <h1>Property Analysis</h1>
-    </div>
-  </section>
-  <section class="page-info">
-    <p >
-      Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
-      tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
-      nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
-      vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
-      euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
-      habitasse platea dictumst. Maecenas facilisis mauris at libero pharetra,
-      id tincidunt mauris luctus. Duis non turpis vitae arcu luctus euismod.
-    </p>
-    <p>
-      Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
-      tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
-      nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
-      vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
-      euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
-      habitasse platea dictumst. Maecenas facilisis mauris at libero pharetra,
-      id tincidunt mauris luctus. Duis non turpis vitae arcu luctus euismod.
-    </p>
-  </section>
+        <h1>Property Analysis</h1>
+      </div>
+    </section>
+    <section class="page-info">
+      <p>
+        Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
+        nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
+        vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
+        euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
+        habitasse platea dictumst. Maecenas facilisis mauris at libero pharetra,
+        id tincidunt mauris luctus. Duis non turpis vitae arcu luctus euismod.
+      </p>
+      <p>
+        Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
+        nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
+        vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
+        euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
+        habitasse platea dictumst. Maecenas facilisis mauris at libero pharetra,
+        id tincidunt mauris luctus. Duis non turpis vitae arcu luctus euismod.
+      </p>
+    </section>
 
     <main>
       <section class="deviation">
         <h2>Analysis of the Deviation of Sales Price from Appraisal Value</h2>
         <div class="form-and-chart">
+
           <form class="dropdown-group">
             <h2>select county and time period</h2>
             <div>
@@ -75,6 +80,34 @@
               <label for="end-date">End Date:</label>
               <input id="end-date" type="month" min="2022-01" max="2023-06" />
             </div>
+
+          <form class="input-form">
+            <label for="start-date">Start Date:</label>
+            <input
+              id="start-date"
+              type="month"
+              min="2022-01"
+              max="2023-06"
+              required
+            />
+
+            <label for="end-date">End Date:</label>
+            <input
+              id="end-date"
+              type="month"
+              min="2022-01"
+              max="2023-06"
+              required
+            />
+
+            <label for="county-select">County:</label>
+            <select id="county-select" required>
+              <option value="">--Please choose a county--</option>
+              <option value="Miami-Dade">Miami-Dade</option>
+            </select>
+
+            <input type="submit" value="Search" />
+
           </form>
           
           <div>
@@ -102,6 +135,7 @@
       <section class="age">
         <h2>Analysis of the Influence of Age on Market Value</h2>
         <div class="form-and-chart">
+
           <form class="dropdown-group">
             <h2>select county and time period</h2>
             <div>
@@ -117,6 +151,34 @@
               <label for="end-date">End Date:</label>
               <input id="end-date" type="month" min="2022-01" max="2023-06" />
             </div>
+
+          <form class="input-form">
+            <label for="start-date">Start Date:</label>
+            <input
+              id="start-date"
+              type="month"
+              min="2022-01"
+              max="2023-06"
+              required
+            />
+
+            <label for="end-date">End Date:</label>
+            <input
+              id="end-date"
+              type="month"
+              min="2022-01"
+              max="2023-06"
+              required
+            />
+
+            <label for="county-select">County:</label>
+            <select id="county-select" required>
+              <option value="">--Please choose a county--</option>
+              <option value="Miami-Dade">Miami-Dade</option>
+            </select>
+
+            <input type="submit" value="Search" />
+
           </form>
           <div>
             <canvas
@@ -142,6 +204,7 @@
       <section class="landSize">
         <h2>Analysis of Sales for Properties of Various Land Sizes</h2>
         <div class="form-and-chart">
+
           <form class="dropdown-group">
             <h2>select county and time period</h2>
             <div>
@@ -157,6 +220,34 @@
               <label for="end-date">End Date:</label>
               <input id="end-date" type="month" min="2022-01" max="2023-06" />
             </div>
+
+          <form class="input-form">
+            <label for="start-date">Start Date:</label>
+            <input
+              id="start-date"
+              type="month"
+              min="2022-01"
+              max="2023-06"
+              required
+            />
+
+            <label for="end-date">End Date:</label>
+            <input
+              id="end-date"
+              type="month"
+              min="2022-01"
+              max="2023-06"
+              required
+            />
+
+            <label for="county-select">County:</label>
+            <select id="county-select" required>
+              <option value="">--Please choose a county--</option>
+              <option value="Miami-Dade">Miami-Dade</option>
+            </select>
+
+            <input type="submit" value="Search" />
+
           </form>
           <div>
             <canvas

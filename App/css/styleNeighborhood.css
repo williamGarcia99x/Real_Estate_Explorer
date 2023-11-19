@@ -109,43 +109,27 @@ main {
   height: 100%;
 }
 
-div.form-and-chart {
+div.chart-block {
   display: flex;
   flex-direction: row;
   gap: 6rem;
   justify-content: center;
-  margin-bottom: 50px;
 }
 
-h2 {
+h2,
+h3 {
   text-align: center;
+}
+
+form.input-form {
+  border-radius: 1px;
+  border-color: #000000;
+  border-style: solid;
+  background-color: #9eabb5;
 }
 
 main {
   margin: 70px 250px 70px 250px;
-}
-
-.dropdown-group h2{
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #74BDF5;
-}
-
-.dropdown-group div {
-  margin: 20px 0 20px 0;
-}
-
-#county, #start-date, #end-date {
-  border: 1px solid #C5C3C4;
-  border-radius: 0.25em;
-  font-size: 16px;
-  cursor: pointer;
-  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
-  padding: 2px;
-}
-
-label{
-  font-size: 16px;
 }
 
 footer {
