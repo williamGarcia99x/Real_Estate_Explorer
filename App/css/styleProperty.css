@@ -135,6 +135,21 @@ main {
   margin: 20px 0 20px 0;
 }
 
+.dropdown-group .search-button {
+  background-color: #2D9BF0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+}
+
 #county, #start-date, #end-date {
   border: 1px solid #C5C3C4;
   border-radius: 0.25em;
