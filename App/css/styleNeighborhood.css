@@ -125,7 +125,9 @@ form.input-form {
   border-radius: 1px;
   border-color: #000000;
   border-style: solid;
-  background-color: #9eabb5;
+  border-width: 1px;
+  background-color: none;
+  padding: 10px;
 }
 
 main {
@@ -137,4 +139,35 @@ footer {
   margin-top: 20px;
   background-color: #c5c3c4;
   text-align: center;
+}
+
+.deviation h2{
+  margin-bottom: 40px;
+}
+
+.search-button {
+  background-color: #2D9BF0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  padding: 7px 20px 7px 20px;
+}
+
+#county, #start-date, #end-date {
+  border: 1px solid #C5C3C4;
+  border-radius: 0.25em;
+  font-size: 16px;
+  cursor: pointer;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  padding: 2px;
+}
+
+section p{
+  margin-top: 55px;
 }
