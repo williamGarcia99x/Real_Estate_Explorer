@@ -1,5 +1,22 @@
 "strict";
 
+function renderChart(canvasId, chartData) {
+  const ctx = document.getElementById(canvasId).getContext("2d");
+  return new Chart(ctx, {
+    type: "line",
+    data: chartData,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
+
+
+/*
 //Need to write a function that retrieves the data to display on the chart.
 //Also need a function that accepts the returned value of the function above and makes a Chart Data object out of it. Then pass it to render chart
 
@@ -42,28 +59,15 @@ const landSizeChartData = {
   ],
 };
 
-function renderChart(canvasId, chartData) {
-  const ctx = document.getElementById(canvasId).getContext("2d");
-  return new Chart(ctx, {
-    type: "line",
-    data: chartData,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
 
-  });
-}
 
 // Render deviation chart
-const deviationChart = renderChart("deviation-chart", deviationChartData);
+// const deviationChart = renderChart("deviation-chart", deviationChartData);
 
 // Render age chart
-const ageChart = renderChart("age-chart", ageChartData);
+// const ageChart = renderChart("age-chart", ageChartData);
 
 // Render land size chart
-const landSizeChart = renderChart("land-size-chart", landSizeChartData);
+// const landSizeChart = renderChart("land-size-chart", landSizeChartData);
 
+*/
