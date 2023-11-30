@@ -25,18 +25,24 @@ async def exchangeQueryData(cursor, websocket):
                     "dates" : [],
                     "values" : []
             }
+            # Convert to JSON and then to a string
+            to_send = str(json.dumps(chart_data))
         case "getAgeInfluence":
             cursor.execute("SELECT TO_CHAR(SALE_DATE, 'Mon YYYY') as SALE_DATE, VALUE FROM (SELECT TO_DATE(SALE_MO || ' ' || SALE_YR, 'MON YYYY') as SALE_DATE, VALUE FROM (SELECT SALE_MO, SALE_YR, COUNT(PARCEL_ID) as VALUE FROM PROPERTY WHERE SALE_MO = 'January' OR SALE_MO = 'February' OR SALE_MO = 'March' OR SALE_MO = 'April' OR SALE_MO = 'May' OR SALE_MO = 'June' OR SALE_MO = 'July' OR SALE_MO = 'August' OR SALE_MO = 'September'OR SALE_MO = 'October' OR SALE_MO = 'November' OR SALE_MO = 'December' GROUP BY SALE_MO, SALE_YR) ORDER BY SALE_DATE ASC)")
             chart_data = {
                     "dates" : [],
                     "values" : []
             }
+            # Convert to JSON and then to a string
+            to_send = str(json.dumps(chart_data))
         case "getSaleLandsize":
             cursor.execute("SELECT TO_CHAR(SALE_DATE, 'Mon YYYY') as SALE_DATE, VALUE FROM (SELECT TO_DATE(SALE_MO || ' ' || SALE_YR, 'MON YYYY') as SALE_DATE, VALUE FROM (SELECT SALE_MO, SALE_YR, COUNT(PARCEL_ID) as VALUE FROM PROPERTY WHERE SALE_MO = 'January' OR SALE_MO = 'February' OR SALE_MO = 'March' OR SALE_MO = 'April' OR SALE_MO = 'May' OR SALE_MO = 'June' OR SALE_MO = 'July' OR SALE_MO = 'August' OR SALE_MO = 'September'OR SALE_MO = 'October' OR SALE_MO = 'November' OR SALE_MO = 'December' GROUP BY SALE_MO, SALE_YR) ORDER BY SALE_DATE ASC)")
             chart_data = {
                     "dates" : [],
                     "values" : []
             }
+            # Convert to JSON and then to a string
+            to_send = str(json.dumps(chart_data))
         case _:
             to_send = "null"
 
@@ -44,9 +50,6 @@ async def exchangeQueryData(cursor, websocket):
     for row in cursor.fetchall():
         chart_data["dates"].append(str(row[0]))
         chart_data["values"].append(str(row[1]))
-
-    # Convert to JSON and then to a string
-    to_send = str(json.dumps(chart_data))
 
     await websocket.send(str(to_send))
 
