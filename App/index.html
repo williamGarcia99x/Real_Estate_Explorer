@@ -5,6 +5,7 @@
     <title>Florida Real Estate Explorer</title>
     <meta name="viewport" content="width=device-width" />
     <link href="./css/styleHome.css" rel="stylesheet" />
+    <script src="Javascript/getDBData.js"></script>
   </head>
 
   <body>
@@ -73,7 +74,7 @@
           <p>
             Click the button below to see how many rows of data were used for this project!
           </p>
-          <button class="button-5" role="button">Calculate</button>
+          <button class="button-5" role="button" onclick="getDBData('getAllTuples')">Calculate</button>
         </div>
       </div>
       <div class="container">
