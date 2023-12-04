@@ -7,6 +7,13 @@
     <link href="../css/styleNeighborhood.css" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../Javascript/neighborhood.js"></script>
+    <script src="../Javascript/getDBData.js"></script>
+    <script>
+      window.onload = function () {
+        getDBData("getSafety");
+      };
+    </script>
   </head>
 
   <body>
@@ -68,15 +75,81 @@
 
           <label for="county-select">County:</label>
           <select id="county" required>
-            <option value="">--- Select County ---</option>
-            <option value="Miami-Dade">Miami-Dade</option>
+            <option value="default">--- Select County ---</option>
+            <option value="11">Alachua</option>
+            <option value="12">Baker</option>
+            <option value="13">Bay</option>
+            <option value="14">Bradford</option>
+            <option value="15">Brevard</option>
+            <option value="16">Broward</option>
+            <option value="17">Calhoun</option>
+            <option value="18">Charlotte</option>
+            <option value="19">Citrus</option>
+            <option value="20">Clay</option>
+            <option value="21">Collier</option>
+            <option value="22">Columbia</option>
+            <option value="23">Miami-Dade</option>
+            <option value="24">DeSoto</option>
+            <option value="25">Dixie</option>
+            <option value="26">Duval</option>
+            <option value="27">Escambia</option>
+            <option value="28">Flagler</option>
+            <option value="29">Franklin</option>
+            <option value="30">Gadsden</option>
+            <option value="31">Gilchrist</option>
+            <option value="32">Glades</option>
+            <option value="33">Gulf</option>
+            <option value="34">Hamilton</option>
+            <option value="35">Hardee</option>
+            <option value="36">Hendry</option>
+            <option value="37">Hernando</option>
+            <option value="38">Highlands</option>
+            <option value="39">Hillsborough</option>
+            <option value="40">Holmes</option>
+            <option value="41">Indian River</option>
+            <option value="42">Jacksonr</option>
+            <option value="43">Jefferson</option>
+            <option value="44">Lafayette</option>
+            <option value="45">Lake</option>
+            <option value="46">Lee</option>
+            <option value="47">Leon</option>
+            <option value="48">Levy</option>
+            <option value="49">Liberty</option>
+            <option value="50">Madison</option>
+            <option value="51">Manatee</option>
+            <option value="52">Marion</option>
+            <option value="53">Martin</option>
+            <option value="54">Monroe</option>
+            <option value="55">Nassau</option>
+            <option value="56">Okaloosa</option>
+            <option value="57">Okeechobee</option>
+            <option value="58">Orange</option>
+            <option value="59">Osceola</option>
+            <option value="60">Palm Beach</option>
+            <option value="61">Pasco</option>
+            <option value="62">Pinellas</option>
+            <option value="63">Polk</option>
+            <option value="64">Putnam</option>
+            <option value="65">St. Johns</option>
+            <option value="66">St. Lucie</option>
+            <option value="67">Santa Rosa</option>
+            <option value="68">Sarasota</option>
+            <option value="69">Seminole</option>
+            <option value="70">Sumter</option>
+            <option value="71">Suwannee</option>
+            <option value="72">Taylor</option>
+            <option value="73">Union</option>
+            <option value="74">Volusia</option>
+            <option value="75">Wakulla</option>
+            <option value="76">Walton</option>
+            <option value="77">Washington</option>
           </select>
 
-          <input class="search-button" type="submit" value="Search" />
+          <input class="search-button" type="button" value="Search" onclick="getDBData('getSafety')"/>
         </form>
         <div class="chart-block">
           <div>
-            <h3>Average Degree of Crime Over Time</h3>
+            <h3>Average Number of Arrests Over Time</h3>
             <div>
               <canvas
                 class="chart"

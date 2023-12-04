@@ -44,7 +44,8 @@ async def exchangeQueryData(cursor, websocket):
                         OR SALE_MO = 'July' OR SALE_MO = 'August' OR SALE_MO = 'September'\
                         OR SALE_MO = 'October' OR SALE_MO = 'November' OR SALE_MO = 'December') \
                         GROUP BY SALE_MO, SALE_YR) \
-                        ORDER BY SALE_DATE ASC)\WHERE SALE_DATE BETWEEN TO_DATE('{data['options']['startDate']}', 'YYYY-MM') AND TO_DATE('{data['options']['endDate']}', 'YYYY-MM')")
+                        ORDER BY SALE_DATE ASC) \
+                        WHERE SALE_DATE BETWEEN TO_DATE('{data['options']['startDate']}', 'YYYY-MM') AND TO_DATE('{data['options']['endDate']}', 'YYYY-MM')")
                         
 
             chart_data = {
@@ -173,6 +174,105 @@ async def exchangeQueryData(cursor, websocket):
                 chart_data["values"].append(str(row[1]))
 
             # Convert to JSON and then to a string
+            to_send = str(json.dumps(chart_data))
+        case "getSafety":
+            chart_data = {
+                    "datesarrests" : [],
+                    "valuesarrests" : [],
+                    "datessales" : [],
+                    "valuessales" : []
+            }
+            # Arrests Chart
+            if data["options"]["county"] == "default":
+                cursor.execute(f"SELECT ARREST_DATE, AVG(VALUE) VALUE \
+                        FROM (SELECT TO_CHAR(ARRESTDATE, 'Mon YYYY') as ARREST_DATE, COUNT(CHARGEID) as VALUE \
+                        FROM ARREST \
+                        WHERE ARRESTDATE >= TO_DATE('2022-01', 'YYYY-MM') \
+                        GROUP BY ARRESTDATE \
+                        ORDER BY ARRESTDATE ASC) \
+                        GROUP BY ARREST_DATE \
+                        ORDER BY TO_DATE(ARREST_DATE, 'Mon YYYY') ASC")
+                for row in cursor.fetchall():
+                    chart_data["datesarrests"].append(str(row[0]))
+                    chart_data["valuesarrests"].append(str(row[1]))
+            else:
+                cursor.execute(f"SELECT ARREST_DATE, AVG(VALUE) VALUE \
+                        FROM (SELECT TO_CHAR(ARRESTDATE, 'Mon YYYY') as ARREST_DATE, COUNT(CHARGEID) as VALUE \
+                        FROM ARREST \
+                        WHERE COUNTYCODE = {data['options']['county']} \
+                        AND ARRESTDATE BETWEEN TO_DATE('{data['options']['startDate']}', 'YYYY-MM')  \
+                        AND TO_DATE('{data['options']['endDate']}', 'YYYY-MM') \
+                        GROUP BY ARRESTDATE \
+                        ORDER BY ARRESTDATE ASC) \
+                        GROUP BY ARREST_DATE \
+                        ORDER BY TO_DATE(ARREST_DATE, 'Mon YYYY') ASC")
+                for row in cursor.fetchall():
+                    chart_data["datesarrests"].append(str(row[0]))
+                    chart_data["valuesarrests"].append(str(row[1]))
+            # Sales Chart
+            if data["options"]["county"] == "default":
+                cursor.execute(f"SELECT TO_CHAR(SALE_DATE, 'Mon YYYY') as SALE_DATE, VALUE \
+                        FROM (SELECT TO_DATE(SALE_MO || ' ' || SALE_YR, 'MON YYYY') as SALE_DATE, VALUE \
+                        FROM (SELECT SALE_MO, SALE_YR, AVG(SALE_PRC) as VALUE \
+                        FROM PROPERTY \
+                        WHERE (SALE_MO = 'January' OR SALE_MO = 'February' OR SALE_MO = 'March' \
+                        OR SALE_MO = 'April' OR SALE_MO = 'May' OR SALE_MO = 'June' \
+                        OR SALE_MO = 'July' OR SALE_MO = 'August' OR SALE_MO = 'September' \
+                        OR SALE_MO = 'October' OR SALE_MO = 'November' OR SALE_MO = 'December') \
+                        GROUP BY SALE_MO, SALE_YR) \
+                        ORDER BY SALE_DATE ASC)")
+                for row in cursor.fetchall():
+                    chart_data["datessales"].append(str(row[0]))
+                    chart_data["valuessales"].append(str(row[1]))
+            else:
+                cursor.execute(f"SELECT TO_CHAR(SALE_DATE, 'Mon YYYY') as SALE_DATE, VALUE \
+                        FROM (SELECT TO_DATE(SALE_MO || ' ' || SALE_YR, 'MON YYYY') as SALE_DATE, VALUE \
+                        FROM (SELECT SALE_MO, SALE_YR, AVG(SALE_PRC) as VALUE \
+                        FROM PROPERTY \
+                        WHERE MARKET_VALUE != 0 AND (SALE_PRC / MARKET_VALUE) - 1 >= 0 \
+                        AND COUNTY_CODE = {data['options']['county']} AND (SALE_PRC / MARKET_VALUE) - 1 <= 10 \
+                        AND (SALE_MO = 'January' OR SALE_MO = 'February' OR SALE_MO = 'March' \
+                        OR SALE_MO = 'April' OR SALE_MO = 'May' OR SALE_MO = 'June' \
+                        OR SALE_MO = 'July' OR SALE_MO = 'August' OR SALE_MO = 'September'\
+                        OR SALE_MO = 'October' OR SALE_MO = 'November' OR SALE_MO = 'December') \
+                        GROUP BY SALE_MO, SALE_YR) \
+                        ORDER BY SALE_DATE ASC) \
+                        WHERE SALE_DATE BETWEEN TO_DATE('{data['options']['startDate']}', 'YYYY-MM') AND TO_DATE('{data['options']['endDate']}', 'YYYY-MM')")
+                        
+                for row in cursor.fetchall():
+                    chart_data["datessales"].append(str(row[0]))
+                    chart_data["valuessales"].append(str(row[1]))
+            to_send = str(json.dumps(chart_data))
+        case "getAffordability":
+            chart_data = {
+                    "datesafford" : [],
+                    "valuesafford" : []
+            }
+            # Affordability Chart
+            cursor.execute(f"SELECT SALE_DATE, \
+                    (((VALUE * ( (PERCENTAGE/100) / 12)) / (1 - POWER((1 + (PERCENTAGE/100) / 12), - 12 * 30)) * 12) \
+                    -  (SELECT {data['options']['householdSize']} FROM TYPICALEXPENSES WHERE COUNTYCODE = {data['options']['county']})) as VALUE \
+                    FROM (SELECT TO_CHAR(SALE_DATE, 'Mon YYYY') as SALE_DATE, VALUE \
+                    FROM (SELECT TO_DATE(SALE_MO || ' ' || SALE_YR, 'MON YYYY') as SALE_DATE, VALUE \
+                    FROM (SELECT SALE_MO, SALE_YR, AVG(SALE_PRC) as VALUE \
+                    FROM PROPERTY, MORTGAGERATES \
+                    WHERE MARKET_VALUE != 0 AND (SALE_PRC / MARKET_VALUE) - 1 >= 0 \
+                    AND COUNTY_CODE = {data['options']['county']} AND (SALE_PRC / MARKET_VALUE) - 1 <= 10 \
+                    AND (SALE_MO = 'January' OR SALE_MO = 'February' OR SALE_MO = 'March' \
+                    OR SALE_MO = 'July' OR SALE_MO = 'August' OR SALE_MO = 'September' \
+                    OR SALE_MO = 'October' OR SALE_MO = 'November' OR SALE_MO = 'December') \
+                    GROUP BY SALE_MO, SALE_YR) \
+                    ORDER BY SALE_DATE ASC) \
+                    WHERE SALE_DATE BETWEEN TO_DATE('{data['options']['startDate']}', 'YYYY-MM') AND TO_DATE('{data['options']['endDate']}', 'YYYY-MM')) \
+                    NATURAL JOIN \
+                    (SELECT SALE_DATE, AVG(PERCENTAGE) as PERCENTAGE \
+                    FROM (SELECT TO_CHAR(RATEDATE, 'Mon YYYY') as SALE_DATE, PERCENTAGE \
+                    FROM MORTGAGERATES \
+                    WHERE RATEDATE BETWEEN TO_DATE('{data['options']['startDate']}', 'YYYY-MM') AND TO_DATE('{data['options']['endDate']}', 'YYYY-MM'))  \
+                    GROUP BY SALE_DATE)")
+            for row in cursor.fetchall():
+                chart_data["datesafford"].append(str(row[0]))
+                chart_data["valuesafford"].append(str(row[1]))
             to_send = str(json.dumps(chart_data))
         case _:
             to_send = "null"

@@ -7,6 +7,8 @@
     <link href="../css/styleAffordability.css" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../Javascript/affordability.js"></script>
+    <script src="../Javascript/getDBData.js"></script>
   </head>
 
   <body>
@@ -38,15 +40,16 @@
     <section class="page-info">
         <h2>Can You Afford This House?</h2>
       <p>
-        Discover whether your dream home is within reach with our user-friendly Affordability Graph. This powerful online tool takes into account the average wage in your county and prevailing interest rates to calculate the estimated monthly cost of your desired house.
+        Discover whether your dream home is within reach with our user-friendly Affordability Graph. This powerful online tool takes into account the average rent in your county and prevailing interest rates to calculate the estimated additional monthly cost of your desired house.
 
 Make informed decisions about homeownership and gain insights into your financial readiness to embark on the journey of owning your own home. Try our Affordability Graph today and take the first step towards your homeownership goals.
-      </p>
+* Rent data Obtained from MIT Living Wage Calculator.
+</p>
     </section>
 
     <main>
       <section class="affordability">
-        <h2>Predicted Cost vs. Avg Housing Expenses in County</h2>
+        <h2>Average County Housing Expense Increase from Rent to Mortgage (30 YR/12 MTH)</h2>
         <div class="form-and-chart">
             <div>
                 <canvas
@@ -61,8 +64,74 @@ Make informed decisions about homeownership and gain insights into your financia
             <h2>select county and time period</h2>
             <div>
               <select id="county" size="1">
-                <option value="">--- Select County ---</option>
-                <option value="Miami-Dade">Miami-Dade</option>
+                <option value="default">--- Select County ---</option>
+                <option value="11">Alachua</option>
+                <option value="12">Baker</option>
+                <option value="13">Bay</option>
+                <option value="14">Bradford</option>
+                <option value="15">Brevard</option>
+                <option value="16">Broward</option>
+                <option value="17">Calhoun</option>
+                <option value="18">Charlotte</option>
+                <option value="19">Citrus</option>
+                <option value="20">Clay</option>
+                <option value="21">Collier</option>
+                <option value="22">Columbia</option>
+                <option value="23">Miami-Dade</option>
+                <option value="24">DeSoto</option>
+                <option value="25">Dixie</option>
+                <option value="26">Duval</option>
+                <option value="27">Escambia</option>
+                <option value="28">Flagler</option>
+                <option value="29">Franklin</option>
+                <option value="30">Gadsden</option>
+                <option value="31">Gilchrist</option>
+                <option value="32">Glades</option>
+                <option value="33">Gulf</option>
+                <option value="34">Hamilton</option>
+                <option value="35">Hardee</option>
+                <option value="36">Hendry</option>
+                <option value="37">Hernando</option>
+                <option value="38">Highlands</option>
+                <option value="39">Hillsborough</option>
+                <option value="40">Holmes</option>
+                <option value="41">Indian River</option>
+                <option value="42">Jacksonr</option>
+                <option value="43">Jefferson</option>
+                <option value="44">Lafayette</option>
+                <option value="45">Lake</option>
+                <option value="46">Lee</option>
+                <option value="47">Leon</option>
+                <option value="48">Levy</option>
+                <option value="49">Liberty</option>
+                <option value="50">Madison</option>
+                <option value="51">Manatee</option>
+                <option value="52">Marion</option>
+                <option value="53">Martin</option>
+                <option value="54">Monroe</option>
+                <option value="55">Nassau</option>
+                <option value="56">Okaloosa</option>
+                <option value="57">Okeechobee</option>
+                <option value="58">Orange</option>
+                <option value="59">Osceola</option>
+                <option value="60">Palm Beach</option>
+                <option value="61">Pasco</option>
+                <option value="62">Pinellas</option>
+                <option value="63">Polk</option>
+                <option value="64">Putnam</option>
+                <option value="65">St. Johns</option>
+                <option value="66">St. Lucie</option>
+                <option value="67">Santa Rosa</option>
+                <option value="68">Sarasota</option>
+                <option value="69">Seminole</option>
+                <option value="70">Sumter</option>
+                <option value="71">Suwannee</option>
+                <option value="72">Taylor</option>
+                <option value="73">Union</option>
+                <option value="74">Volusia</option>
+                <option value="75">Wakulla</option>
+                <option value="76">Walton</option>
+                <option value="77">Washington</option>
               </select>
             </div>
             <div>
@@ -75,37 +144,25 @@ Make informed decisions about homeownership and gain insights into your financia
             </div>
             <h2>select household size</h2>
             <div>
-            <select id="county" size="1">
-                <option value="">--- Select Household Size 1 ---</option>
-                <option value="household-1">1 ADULT</option>
-                <option value="household-1">2 ADULTS (1 WORKING)</option>
-                <option value="household-1">2 ADULTS (BOTH WORKING)</option>
+            <select id="household-size" size="1">
+                <option value="">--- Select Household Size ---</option>
+                <option value="ONEADULT_ZEROCHILD">1 ADULT (0 children)</option>
+                <option value="ONEADULT_ONECHILD">1 ADULT (1 children)</option>
+                <option value="ONEADULT_TWOCHILD">1 ADULTS (2 children)</option>
+                <option value="ONEADULT_THREECHILD">1 ADULTS (3 children)</option>
+                <option value="TWOADULT_ZEROCHILD_ONEWORKING">2 ADULTS (0 children, 1 working)</option>
+                <option value="TWOADULT_ONECHILD_ONEWORKING">2 ADULTS (1 children, 1 working)</option>
+                <option value="TWOADULT_TWOCHILD_ONEWORKING">2 ADULTS (2 children, 1 working)</option>
+                <option value="TWOADULT_THREECHILD_ONEWORKING">2 ADULTS (3 children, 1 working)</option>
+                <option value="TWOADULT_ZEROCHILD_BOTHWORKING">2 ADULTS (0 children, 2 working)</option>
+                <option value="TWOADULT_ONECHILD_BOTHWORKING">2 ADULTS (1 children, 2 working)</option>
+                <option value="TWOADULT_TWOCHILD_BOTHWORKING">2 ADULTS (2 children, 2 working)</option>
+                <option value="TWOADULT_THREECHILD_BOTHWORKING">2 ADULTS (3 children, 2 working)</option> 
               </select>
             </div>
-            <div>
-                <select id="county" size="1">
-                    <option value="">--- Select Household Size 2 ---</option>
-                    <option value="household-1">0 CHILDREN</option>
-                    <option value="household-1">1 CHILD</option>
-                    <option value="household-1">2 CHILDREN</option>
-                  </select>
-                </div>
-            <input class="search-button" type="submit" value="Search" />
+            <input class="search-button" type="button" value="Search" onclick="getDBData('getAffordability')"/>
           </form>
-          
-          
         </div>
-
-        <p>
-          Sed quisque venenatis odio ac justo. Pellentesque habitant morbi
-          tristique senectus et netus et malesuada fames ac turpis egestas. Nunc
-          nec urna ut nisi dictum congue. Integer sed elit vel odio efficitur
-          vehicula. Fusce a sapien id justo fermentum sollicitudin. Vivamus
-          euismod dolor at justo gravida, vel dictum purus hendrerit. In hac
-          habitasse platea dictumst. Maecenas facilisis mauris at libero
-          pharetra, id tincidunt mauris luctus. Duis non turpis vitae arcu
-          luctus euismod.
-        </p>
       </section>
 
       
